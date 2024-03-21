@@ -7,13 +7,11 @@ from perm_crawler import crawl_processing_time
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
-def read_email_config(file_path="email_pwd.json"):
-    with open(file_path, 'r') as file:
-        data = json.load(file)
-    return data["send_email"], data["send_email_pwd"]
-
-def inform_processing_time(receiving_email: str):
-    sender_email, sender_pwd = read_email_config()
+def inform_processing_time(
+        sender_email: str,
+        sender_pwd: str,
+        receiving_email: str,
+    ):
     processing_time = crawl_processing_time()  # Make sure this function is defined and returns a string
     
     message = MIMEMultipart("alternative")
