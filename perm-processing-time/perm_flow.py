@@ -32,6 +32,7 @@ if __name__ == "__main__":
     ).deploy(   
         name="daily-inform-perm-processing-time",
         work_pool_name="perm-time-crawler-pool",
+        job_variables={"pip_packages": ["bs4", "requests"]},
         tags=["daily", "crawl"],
         parameters={
             "sender_email": sender_email,
